@@ -1,0 +1,13 @@
+[project]
+name = "yz-scraper"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "arxiv>=2.2.0",
+    "bs4>=0.0.2",
+    "feedparser>=6.0.11",
+    "markdown>=3.8.2",
+    "pdfkit>=1.0.0",
+]
