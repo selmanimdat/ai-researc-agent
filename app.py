@@ -5,7 +5,11 @@ from datetime import datetime
 import markdown
 import pdfkit
 from scrapers import fetch_arxiv_papers,fetch_google_news
+import os
+from dotenv import load_dotenv
 
+
+load_dotenv()
 # ----------- 4. Summarize using OpenRouter model -----------
 def summarize_items_openrouter(items, section_title, api_key):
     combined_text = "\n\n".join([f"Title: {item['title']}\nSummary: {item['summary']}" for item in items])
@@ -61,7 +65,8 @@ def save_as_pdf_md(md_text, filename=f"report ({today}).pdf"):
 
 # ----------- 6. Run It! -----------
 if __name__ == "__main__":
-    API_KEY = "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"  # Replace with your actual API key
+    api_key = os.getenv("API_KEY")
+    API_KEY = api_key
     final_report = build_daily_report(API_KEY)
     print(final_report)
     save_as_pdf_md(final_report)
